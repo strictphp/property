@@ -18,5 +18,10 @@
         "psr-4": {
             "Strict\\Property\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Strict\\Property\\Tests\\": "tests/"
+        }
     }
 }
