@@ -2,7 +2,7 @@
 
 namespace Strict\Property\Errors;
 
-use Strict\Property\Errors\UndefinedPropertyError;
+use Error;
 
 
 /**
@@ -13,7 +13,7 @@ use Strict\Property\Errors\UndefinedPropertyError;
  * @package strictphp/property
  * @since 1.0.0
  */
-class DisabledPropertyInjectionError extends UndefinedPropertyError
+class DisabledPropertyInjectionError extends Error
 {
 
     public function __construct(string $className)
