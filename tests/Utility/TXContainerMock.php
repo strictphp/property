@@ -17,4 +17,9 @@ class TXContainerMock extends ReadonlyPropertyContainer
         $this->setReadonlyProperty('intValue', 33 - 4);
     }
 
+    public function getA(): array
+    {
+        return $this->getReadonlyPropertyAll();
+    }
+
 }

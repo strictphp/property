@@ -36,6 +36,14 @@ abstract class ReadonlyPropertyContainer extends ClassWithDisablePropertyInjecti
         return array_key_exists($name, $this->readonlyValues);
     }
 
+    /**
+     * @since 1.3.0
+     */
+    protected function getReadonlyPropertyAll(): array
+    {
+        return $this->readonlyValues;
+    }
+
     public function __get($n)
     {
         if ($this->issetReadonlyProperty($n)) {

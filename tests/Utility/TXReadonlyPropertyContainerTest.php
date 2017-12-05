@@ -65,4 +65,9 @@ class TXReadonlyPropertyContainerTest extends TestCase
         $this->cm->undefined = 3;
     }
 
+    public function testGetAll()
+    {
+        $this->assertEquals(['intValue' => 33 - 4], $this->cm->getA());
+    }
+
 }
