@@ -12,7 +12,7 @@ use Strict\Property\Errors\ReadonlyPropertyError;
  * @author 4kizuki <akizuki.c10.l65@gmail.com>
  * @copyright 2017 4kizuki. All Rights Reserved.
  * @package strictphp/property
- * @since 1.0.0
+ * @since 1.1.0
  */
 abstract class ReadonlyPropertyContainer
 {
