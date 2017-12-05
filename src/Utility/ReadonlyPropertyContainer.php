@@ -2,7 +2,7 @@
 
 namespace Strict\Property\Utility;
 
-use Strict\Property\DisablePropertyInjection;
+use Strict\Property\Utility\ClassWithDisablePropertyInjection;
 use Strict\Property\Errors\ReadonlyPropertyError;
 
 
@@ -14,15 +14,8 @@ use Strict\Property\Errors\ReadonlyPropertyError;
  * @package strictphp/property
  * @since 1.1.0
  */
-abstract class ReadonlyPropertyContainer
+abstract class ReadonlyPropertyContainer extends ClassWithDisablePropertyInjection
 {
-
-    use DisablePropertyInjection {
-        __get as private traitGet;
-        __set as private traitSet;
-        __isset as private traitIsset;
-        __unset as private traitUnset;
-    }
 
     private $readonlyValues = [];
 
@@ -49,7 +42,7 @@ abstract class ReadonlyPropertyContainer
             return $this->readonlyValues[$n];
         }
 
-        return $this->traitGet($n);
+        return parent::__get($n);
     }
 
     public function __set($n, $v)
@@ -57,12 +50,12 @@ abstract class ReadonlyPropertyContainer
         if ($this->issetReadonlyProperty($n)) {
             throw new ReadonlyPropertyError(static::class, $n);
         }
-        $this->traitSet($n, $v);
+        parent::__set($n, $v);
     }
 
     public function __isset($n)
     {
-        return $this->issetReadonlyProperty($n) || $this->traitIsset($n);
+        return $this->issetReadonlyProperty($n) || parent::__isset($n);
     }
 
     public function __unset($n)
@@ -70,7 +63,7 @@ abstract class ReadonlyPropertyContainer
         if ($this->issetReadonlyProperty($n)) {
             throw new ReadonlyPropertyError(static::class, $n);
         }
-        $this->traitUnset($n);
+        parent::__unset($n);
     }
 
 }
