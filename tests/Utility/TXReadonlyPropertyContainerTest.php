@@ -67,7 +67,15 @@ class TXReadonlyPropertyContainerTest extends TestCase
 
     public function testGetAll()
     {
-        $this->assertEquals(['intValue' => 33 - 4], $this->cm->getA());
+        $this->assertEquals(33 - 4, $this->cm->getA()['intValue']);
+        $this->assertEquals(2, count($this->cm->getA()));
+    }
+
+    public function testClone()
+    {
+        $cloned = clone $this->cm;
+        $this->assertTrue($cloned->stdClass[0] == $this->cm->stdClass[0]);
+        $this->assertFalse($cloned->stdClass[0] === $this->cm->stdClass[0]);
     }
 
 }

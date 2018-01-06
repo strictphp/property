@@ -44,6 +44,26 @@ abstract class ReadonlyPropertyContainer extends ClassWithDisablePropertyInjecti
         return $this->readonlyValues;
     }
 
+    public function __clone()
+    {
+        $this->readonlyValues = self::cloneArray($this->readonlyValues);
+    }
+
+    private static function cloneArray(array $source): array
+    {
+        $ret = [];
+        foreach ($source as $key => $value) {
+            if (is_array($value)) {
+                $ret[$key] = self::cloneArray($value);
+            } else if (is_object($value)) {
+                $ret[$key] = clone $value;
+            } else {
+                $ret[$key] = $value;
+            }
+        }
+        return $ret;
+    }
+
     public function __get($n)
     {
         if ($this->issetReadonlyProperty($n)) {
