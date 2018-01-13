@@ -24,7 +24,7 @@ abstract class ReadonlyPropertyContainer
      * @param mixed  $value
      * @return void
      */
-    protected function setReadonlyProperty(string $name, $value)
+    protected function setReadonlyProperty(string $name, $value): void
     {
         $this->readonlyValues[$name] = $value;
     }
@@ -35,7 +35,7 @@ abstract class ReadonlyPropertyContainer
      * @param string $name
      * @return void
      */
-    protected function unsetReadonlyProperty(string $name)
+    protected function unsetReadonlyProperty(string $name): void
     {
         if ($this->issetReadonlyProperty($name)) {
             unset($this->readonlyValues[$name]);
