@@ -64,26 +64,6 @@ abstract class ReadonlyPropertyContainer
     {
         return $this->readonlyValues;
     }
-
-    public function __clone()
-    {
-        $this->readonlyValues = self::cloneArray($this->readonlyValues);
-    }
-
-    private static function cloneArray(array $source): array
-    {
-        $ret = [];
-        foreach ($source as $key => $value) {
-            if (is_array($value)) {
-                $ret[$key] = self::cloneArray($value);
-            } else if (is_object($value)) {
-                $ret[$key] = clone $value;
-            } else {
-                $ret[$key] = $value;
-            }
-        }
-        return $ret;
-    }
     
     /**
      * @inheritdoc
@@ -129,6 +109,35 @@ abstract class ReadonlyPropertyContainer
             throw new ReadonlyPropertyError(static::class, $name);
         }
         parent::__unset($name);
+    }
+
+    /**
+     * Magic method.
+     */
+    public function __clone()
+    {
+        $this->readonlyValues = self::cloneArray($this->readonlyValues);
+    }
+
+    /**
+     * This method copies an array. All elements of the array will be cloned.
+     *
+     * @param array $source
+     * @return array
+     */
+    private static function cloneArray(array $source): array
+    {
+        $ret = [];
+        foreach ($source as $key => $value) {
+            if (is_array($value)) {
+                $ret[$key] = self::cloneArray($value);
+            } else if (is_object($value)) {
+                $ret[$key] = clone $value;
+            } else {
+                $ret[$key] = $value;
+            }
+        }
+        return $ret;
     }
 
     /** @var array */
