@@ -54,6 +54,10 @@ abstract class ReadonlyPropertyContainer
     }
 
     /**
+     * This method returns the array of read-only values.
+     *
+     * @return array
+     *
      * @since 1.3.0
      */
     protected function getReadonlyPropertyAll(): array
