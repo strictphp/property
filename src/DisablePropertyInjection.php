@@ -21,7 +21,7 @@ trait DisablePropertyInjection
 
     public function __set($n, $v)
     {
-        throw new DisabledPropertyInjectionError(static::class);
+        throw new DisabledPropertyInjectionError(static::class, $n);
     }
 
 }

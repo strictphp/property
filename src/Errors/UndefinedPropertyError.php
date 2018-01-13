@@ -6,19 +6,35 @@ use Error;
 
 
 /**
- * [ Error ] Operation on Undefined Property
+ * [Error] Undefined Property
  *
- * @author 4kizuki <akizuki.c10.l65@gmail.com>
- * @copyright 2017 4kizuki. All Rights Reserved.
+ * @author Showsay You <akizuki.c10.l65@gmail.com>
+ * @copyright 2017 Strict PHP Project. All Rights Reserved.
  * @package strictphp/property
  * @since 1.0.0
  */
 class UndefinedPropertyError extends Error
 {
-
-    public function __construct(string $className, string $propertyName)
+    /**
+     * UndefinedPropertyError constructor.
+     *
+     * @param string $className
+     * @param string $propertyName
+     */
+    final public function __construct(string $className, string $propertyName)
     {
-        parent::__construct("Property {$className}::{$propertyName} is undefined.");
+        parent::__construct(static::generateMessage($className, $propertyName));
     }
 
+    /**
+     * This method generates the error message.
+     *
+     * @param string $className
+     * @param string $propertyName
+     * @return string
+     */
+    protected static function generateMessage(string $className, string $propertyName): string
+    {
+        return "Undefined property: {$className}::\${$propertyName}";
+    }
 }
