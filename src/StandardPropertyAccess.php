@@ -6,34 +6,61 @@ use Strict\Property\Errors\UndefinedPropertyError;
 
 
 /**
- * [ Trait ] Standard Property Access
+ * [Trait] Standard Property Access
  *
- * @author 4kizuki <akizuki.c10.l65@gmail.com>
- * @copyright 2017 4kizuki. All Rights Reserved.
+ * @author Showsay You <akizuki.c10.l65@gmail.com>
+ * @copyright 2017 Strict PHP Project. All Rights Reserved.
  * @package strictphp/property
  * @since 1.0.0
  */
 trait StandardPropertyAccess
 {
-
-    public function __get($n)
+    /**
+     * Magic method.
+     *
+     * @param $name
+     * @return mixed
+     *
+     * @throws UndefinedPropertyError
+     */
+    public function __get($name)
     {
-        throw new UndefinedPropertyError(static::class, $n);
+        throw new UndefinedPropertyError(static::class, $name);
     }
 
-    public function __set($n, $v)
+    /**
+     * Magic method.
+     *
+     * @param $name
+     * @param $value
+     * @return void
+     */
+    public function __set($name, $value)
     {
-        $this->{$n} = $v;
+        $this->{$name} = $value;
     }
 
-    public function __isset($n)
+    /**
+     * Magic method.
+     *
+     * @param $name
+     * @return bool
+     */
+    public function __isset($name)
     {
         return false;
     }
 
-    public function __unset($n)
+    /**
+     * Magic method.
+     *
+     * @param $name
+     * @return void
+     *
+     * @throws UndefinedPropertyError
+     */
+    public function __unset($name)
     {
-        throw new UndefinedPropertyError(static::class, $n);
+        throw new UndefinedPropertyError(static::class, $name);
     }
-
 }

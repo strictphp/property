@@ -7,21 +7,24 @@ use Strict\Property\Errors\DisabledPropertyInjectionError;
 
 
 /**
- * [ Trait ] Disable Property Injection
+ * [Trait] Disable Property Injection
  *
- * @author 4kizuki <akizuki.c10.l65@gmail.com>
- * @copyright 2017 4kizuki. All Rights Reserved.
+ * @author Showsay You <akizuki.c10.l65@gmail.com>
+ * @copyright 2017 Strict PHP Project. All Rights Reserved.
  * @package strictphp/property
  * @since 1.0.0
  */
 trait DisablePropertyInjection
 {
-
     use StandardPropertyAccess;
 
-    public function __set($n, $v)
+    /**
+     * @inheritdoc
+     *
+     * @throws DisabledPropertyInjectionError
+     */
+    public function __set($name, $value)
     {
-        throw new DisabledPropertyInjectionError(static::class, $n);
+        throw new DisabledPropertyInjectionError(static::class, $name);
     }
-
 }
