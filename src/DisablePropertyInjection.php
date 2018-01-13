@@ -23,7 +23,7 @@ trait DisablePropertyInjection
      *
      * @throws DisabledPropertyInjectionError
      */
-    public function __set($name, $value)
+    public function __set($name, $value): void
     {
         throw new DisabledPropertyInjectionError(static::class, $name);
     }

@@ -82,7 +82,7 @@ abstract class ReadonlyPropertyContainer
      *
      * @throws ReadonlyPropertyError
      */
-    public function __set($name, $value)
+    public function __set($name, $value): void
     {
         if ($this->issetReadonlyProperty($name)) {
             throw new ReadonlyPropertyError(static::class, $name);
@@ -93,7 +93,7 @@ abstract class ReadonlyPropertyContainer
     /**
      * @inheritdoc
      */
-    public function __isset($name)
+    public function __isset($name): bool
     {
         return $this->issetReadonlyProperty($name) || parent::__isset($name);
     }
@@ -103,7 +103,7 @@ abstract class ReadonlyPropertyContainer
      *
      * @throws ReadonlyPropertyError
      */
-    public function __unset($name)
+    public function __unset($name): void
     {
         if ($this->issetReadonlyProperty($name)) {
             throw new ReadonlyPropertyError(static::class, $name);
