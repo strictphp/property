@@ -3,21 +3,20 @@
 namespace Strict\Property\Tests\Utility;
 
 use PHPUnit\Framework\TestCase;
-use Strict\Property\Tests\Utility\TXContainerMock;
+use Strict\Property\Tests\Utility\ZZContainerMock;
 use Strict\Property\Errors\ReadonlyPropertyError;
 use Strict\Property\Errors\UndefinedPropertyError;
 use Strict\Property\Errors\DisabledPropertyInjectionError;
 
 
-class TXReadonlyPropertyContainerTest extends TestCase
+class ZZReadonlyPropertyContainerTest extends TestCase
 {
-
-    /** @var TXContainerMock */
+    /** @var ZZContainerMock */
     private $cm;
 
     public function setUp()
     {
-        $this->cm = new TXContainerMock;
+        $this->cm = new ZZContainerMock;
     }
 
     public function testGet()
@@ -64,5 +63,4 @@ class TXReadonlyPropertyContainerTest extends TestCase
         $this->expectException(DisabledPropertyInjectionError::class);
         $this->cm->undefined = 3;
     }
-
 }

@@ -2,23 +2,24 @@
 
 namespace Strict\Property\Errors;
 
-use Error;
+use Strict\Property\Errors\PropertyError;
 
 
 /**
- * [ Error ] Operation on Undefined Property
+ * [Error] Undefined Property
  *
- * @author 4kizuki <akizuki.c10.l65@gmail.com>
- * @copyright 2017 4kizuki. All Rights Reserved.
+ * @author Showsay You <akizuki.c10.l65@gmail.com>
+ * @copyright 2017 Strict PHP Project. All Rights Reserved.
  * @package strictphp/property
  * @since 1.0.0
  */
-class UndefinedPropertyError extends Error
+class UndefinedPropertyError extends PropertyError
 {
-
-    public function __construct(string $className, string $propertyName)
+    /**
+     * @inheritdoc
+     */
+    protected static function generateMessage(string $className, string $propertyName): string
     {
-        parent::__construct("Property {$className}::{$propertyName} is undefined.");
+        return "Undefined property: {$className}::\${$propertyName}";
     }
-
 }
