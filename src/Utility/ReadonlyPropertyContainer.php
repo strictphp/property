@@ -14,7 +14,8 @@ use Strict\Property\Errors\ReadonlyPropertyError;
  * @package strictphp/property
  * @since 1.1.0
  */
-abstract class ReadonlyPropertyContainer extends ClassWithDisablePropertyInjection
+abstract class ReadonlyPropertyContainer
+    extends ClassWithDisablePropertyInjection
 {
     /**
      * This method sets the value of a read-only property.
