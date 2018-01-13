@@ -7,23 +7,34 @@ use Strict\Property\Errors\ReadonlyPropertyError;
 
 
 /**
- * [ Container ] Readonly Property Container
+ * [Container] Readonly Property Container
  *
- * @author 4kizuki <akizuki.c10.l65@gmail.com>
- * @copyright 2017 4kizuki. All Rights Reserved.
+ * @author Showsay You <akizuki.c10.l65@gmail.com>
+ * @copyright 2017 Strict PHP Project. All Rights Reserved.
  * @package strictphp/property
  * @since 1.1.0
  */
-abstract class ReadonlyPropertyContainer extends ClassWithDisablePropertyInjection
+abstract class ReadonlyPropertyContainer
+    extends ClassWithDisablePropertyInjection
 {
-
-    private $readonlyValues = [];
-
+    /**
+     * This method sets the value of a read-only property.
+     *
+     * @param string $name
+     * @param mixed  $value
+     * @return void
+     */
     protected function setReadonlyProperty(string $name, $value)
     {
         $this->readonlyValues[$name] = $value;
     }
 
+    /**
+     * This method removes a read-only property.
+     *
+     * @param string $name
+     * @return void
+     */
     protected function unsetReadonlyProperty(string $name)
     {
         if ($this->issetReadonlyProperty($name)) {
@@ -31,12 +42,22 @@ abstract class ReadonlyPropertyContainer extends ClassWithDisablePropertyInjecti
         }
     }
 
-    protected function issetReadonlyProperty(string $name)
+    /**
+     * This method tells whether a read-only property exists or not.
+     *
+     * @param string $name
+     * @return bool
+     */
+    protected function issetReadonlyProperty(string $name): bool
     {
         return array_key_exists($name, $this->readonlyValues);
     }
 
     /**
+     * This method returns the array of read-only values.
+     *
+     * @return array
+     *
      * @since 1.3.0
      */
     protected function getReadonlyPropertyAll(): array
@@ -63,35 +84,53 @@ abstract class ReadonlyPropertyContainer extends ClassWithDisablePropertyInjecti
         }
         return $ret;
     }
-
-    public function __get($n)
+    
+    /**
+     * @inheritdoc
+     */
+    public function __get($name)
     {
-        if ($this->issetReadonlyProperty($n)) {
-            return $this->readonlyValues[$n];
+        if ($this->issetReadonlyProperty($name)) {
+            return $this->readonlyValues[$name];
         }
 
-        return parent::__get($n);
+        return parent::__get($name);
     }
 
-    public function __set($n, $v)
+    /**
+     * @inheritdoc
+     *
+     * @throws ReadonlyPropertyError
+     */
+    public function __set($name, $value)
     {
-        if ($this->issetReadonlyProperty($n)) {
-            throw new ReadonlyPropertyError(static::class, $n);
+        if ($this->issetReadonlyProperty($name)) {
+            throw new ReadonlyPropertyError(static::class, $name);
         }
-        parent::__set($n, $v);
+        parent::__set($name, $value);
     }
 
-    public function __isset($n)
+    /**
+     * @inheritdoc
+     */
+    public function __isset($name)
     {
-        return $this->issetReadonlyProperty($n) || parent::__isset($n);
+        return $this->issetReadonlyProperty($name) || parent::__isset($name);
     }
 
-    public function __unset($n)
+    /**
+     * @inheritdoc
+     *
+     * @throws ReadonlyPropertyError
+     */
+    public function __unset($name)
     {
-        if ($this->issetReadonlyProperty($n)) {
-            throw new ReadonlyPropertyError(static::class, $n);
+        if ($this->issetReadonlyProperty($name)) {
+            throw new ReadonlyPropertyError(static::class, $name);
         }
-        parent::__unset($n);
+        parent::__unset($name);
     }
 
+    /** @var array */
+    private $readonlyValues = [];
 }

@@ -7,9 +7,8 @@ use Strict\Property\DisablePropertyInjection;
 use Strict\Property\Errors\DisabledPropertyInjectionError;
 
 
-class TXDisabledPropertyInjectionTest extends TestCase
+class ZZDisabledPropertyInjectionTest extends TestCase
 {
-
     use DisablePropertyInjection;
 
     public function testSet()
@@ -17,5 +16,4 @@ class TXDisabledPropertyInjectionTest extends TestCase
         $this->expectException(DisabledPropertyInjectionError::class);
         $this->undefinedProperty = 3;
     }
-
 }

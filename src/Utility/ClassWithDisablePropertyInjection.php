@@ -6,16 +6,14 @@ use Strict\Property\DisablePropertyInjection;
 
 
 /**
- * [ Base ] Class with DisablePropertyInjection
+ * [Base] Class with DisablePropertyInjection Trait
  *
- * @author 4kizuki <akizuki.c10.l65@gmail.com>
- * @copyright 2017 4kizuki. All Rights Reserved.
+ * @author Showsay You <akizuki.c10.l65@gmail.com>
+ * @copyright 2017 Strict PHP Project. All Rights Reserved.
  * @package strictphp/property
  * @since 1.2.0
  */
 class ClassWithDisablePropertyInjection
 {
-
     use DisablePropertyInjection;
-
 }

@@ -6,13 +6,11 @@ use Strict\Property\Utility\ReadonlyPropertyContainer;
 
 
 /**
- *
  * @property-read int $intValue
  * @property-read \stdClass $stdClass
  */
-class TXContainerMock extends ReadonlyPropertyContainer
+class ZZContainerMock extends ReadonlyPropertyContainer
 {
-
     public function __construct()
     {
         $this->setReadonlyProperty('intValue', 33 - 4);
@@ -23,5 +21,4 @@ class TXContainerMock extends ReadonlyPropertyContainer
     {
         return $this->getReadonlyPropertyAll();
     }
-
 }
