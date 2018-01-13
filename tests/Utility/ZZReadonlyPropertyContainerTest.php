@@ -63,4 +63,9 @@ class ZZReadonlyPropertyContainerTest extends TestCase
         $this->expectException(DisabledPropertyInjectionError::class);
         $this->cm->undefined = 3;
     }
+
+    public function testGetAll()
+    {
+        $this->assertEquals(['intValue' => 33 - 4], $this->cm->getA());
+    }
 }

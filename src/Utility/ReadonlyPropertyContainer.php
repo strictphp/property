@@ -54,6 +54,14 @@ abstract class ReadonlyPropertyContainer
     }
 
     /**
+     * @since 1.3.0
+     */
+    protected function getReadonlyPropertyAll(): array
+    {
+        return $this->readonlyValues;
+    }
+    
+    /**
      * @inheritdoc
      */
     public function __get($name)
