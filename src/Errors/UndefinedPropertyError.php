@@ -2,7 +2,7 @@
 
 namespace Strict\Property\Errors;
 
-use Error;
+use Strict\Property\Errors\PropertyError;
 
 
 /**
@@ -13,25 +13,10 @@ use Error;
  * @package strictphp/property
  * @since 1.0.0
  */
-class UndefinedPropertyError extends Error
+class UndefinedPropertyError extends PropertyError
 {
     /**
-     * UndefinedPropertyError constructor.
-     *
-     * @param string $className
-     * @param string $propertyName
-     */
-    final public function __construct(string $className, string $propertyName)
-    {
-        parent::__construct(static::generateMessage($className, $propertyName));
-    }
-
-    /**
-     * This method generates the error message.
-     *
-     * @param string $className
-     * @param string $propertyName
-     * @return string
+     * @inheritdoc
      */
     protected static function generateMessage(string $className, string $propertyName): string
     {
