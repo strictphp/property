@@ -7,9 +7,8 @@ use Strict\Property\StandardPropertyAccess;
 use Strict\Property\Errors\UndefinedPropertyError;
 
 
-class TXStandarPropertyAccessTest extends TestCase
+class ZZStandardPropertyAccessTest extends TestCase
 {
-
     use StandardPropertyAccess;
 
     public function testGet()
@@ -34,5 +33,4 @@ class TXStandarPropertyAccessTest extends TestCase
         $this->expectException(UndefinedPropertyError::class);
         unset($this->undefinedProperty);
     }
-
 }
