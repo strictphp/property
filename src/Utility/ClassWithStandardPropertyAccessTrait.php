@@ -13,7 +13,7 @@ use Strict\Property\StandardPropertyAccess;
  * @package strictphp/property
  * @since 1.2.0
  */
-class ClassWithStandardPropertyAccess
+class ClassWithStandardPropertyAccessTrait
 {
     use StandardPropertyAccess;
 }

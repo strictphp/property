@@ -2,7 +2,7 @@
 
 namespace Strict\Property\Utility;
 
-use Strict\Property\Utility\ClassWithDisablePropertyInjection;
+use Strict\Property\Utility\ClassWithDisablePropertyInjectionTrait;
 use Strict\Property\Errors\ReadonlyPropertyError;
 
 
@@ -15,7 +15,7 @@ use Strict\Property\Errors\ReadonlyPropertyError;
  * @since 1.1.0
  */
 abstract class ReadonlyPropertyContainer
-    extends ClassWithDisablePropertyInjection
+    extends ClassWithDisablePropertyInjectionTrait
 {
     /**
      * This method sets the value of a read-only property.
