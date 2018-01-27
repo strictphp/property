@@ -1,5 +1,8 @@
 # Property
 
+## Installation
+`composer require strictphp/property`
+
 ## Basic Traits
 ```php
 namespace Strict\Property;
