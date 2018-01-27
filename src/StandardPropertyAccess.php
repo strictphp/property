@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Strict\Property;
 
@@ -18,7 +19,7 @@ trait StandardPropertyAccess
     /**
      * Magic method.
      *
-     * @param $name
+     * @param string $name
      * @return mixed
      *
      * @throws UndefinedPropertyError
@@ -31,11 +32,11 @@ trait StandardPropertyAccess
     /**
      * Magic method.
      *
-     * @param $name
+     * @param string $name
      * @param $value
      * @return void
      */
-    public function __set($name, $value)
+    public function __set($name, $value): void
     {
         $this->{$name} = $value;
     }
@@ -43,10 +44,10 @@ trait StandardPropertyAccess
     /**
      * Magic method.
      *
-     * @param $name
+     * @param string $name
      * @return bool
      */
-    public function __isset($name)
+    public function __isset($name): bool
     {
         return false;
     }
@@ -54,12 +55,12 @@ trait StandardPropertyAccess
     /**
      * Magic method.
      *
-     * @param $name
+     * @param string $name
      * @return void
      *
      * @throws UndefinedPropertyError
      */
-    public function __unset($name)
+    public function __unset($name): void
     {
         throw new UndefinedPropertyError(static::class, $name);
     }

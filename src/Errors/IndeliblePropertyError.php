@@ -3,24 +3,21 @@ declare(strict_types=1);
 
 namespace Strict\Property\Errors;
 
-use Strict\Property\Errors\UndefinedPropertyError;
+use Strict\Property\Errors\PropertyError;
 
 
 /**
- * [Error] Dynamic Property Injection is Disabled
+ * [Error] Indelible Property
  *
  * @author Showsay You <akizuki.c10.l65@gmail.com>
  * @copyright 2017 Strict PHP Project. All Rights Reserved.
  * @package strictphp/property
- * @since 1.0.0
+ * @since 2.0.0
  */
-class DisabledPropertyInjectionError extends UndefinedPropertyError
+class IndeliblePropertyError extends PropertyError
 {
-    /**
-     * @inheritdoc
-     */
     protected static function generateMessage(string $className, string $propertyName): string
     {
-        return "Undefined property: {$className}::\${$propertyName}; dynamic property injection is disabled.";
+        return "Indelible property: {$className}::\${$propertyName}";
     }
 }

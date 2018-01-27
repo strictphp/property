@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Strict\Property\Utility;
 
@@ -13,7 +14,7 @@ use Strict\Property\StandardPropertyAccess;
  * @package strictphp/property
  * @since 1.2.0
  */
-class ClassWithStandardPropertyAccess
+class ClassWithStandardPropertyAccessTrait
 {
     use StandardPropertyAccess;
 }

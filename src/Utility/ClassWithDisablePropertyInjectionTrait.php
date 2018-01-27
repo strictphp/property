@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Strict\Property\Utility;
 
@@ -13,7 +14,7 @@ use Strict\Property\DisablePropertyInjection;
  * @package strictphp/property
  * @since 1.2.0
  */
-class ClassWithDisablePropertyInjection
+class ClassWithDisablePropertyInjectionTrait
 {
     use DisablePropertyInjection;
 }

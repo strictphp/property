@@ -1,8 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace Strict\Property\Utility;
 
-use Strict\Property\Utility\ClassWithDisablePropertyInjection;
+use Strict\Property\Utility\ClassWithDisablePropertyInjectionTrait;
 use Strict\Property\Errors\ReadonlyPropertyError;
 
 
@@ -15,7 +16,7 @@ use Strict\Property\Errors\ReadonlyPropertyError;
  * @since 1.1.0
  */
 abstract class ReadonlyPropertyContainer
-    extends ClassWithDisablePropertyInjection
+    extends ClassWithDisablePropertyInjectionTrait
 {
     /**
      * This method sets the value of a read-only property.
@@ -24,7 +25,7 @@ abstract class ReadonlyPropertyContainer
      * @param mixed  $value
      * @return void
      */
-    protected function setReadonlyProperty(string $name, $value)
+    protected function setReadonlyProperty(string $name, $value): void
     {
         $this->readonlyValues[$name] = $value;
     }
@@ -35,7 +36,7 @@ abstract class ReadonlyPropertyContainer
      * @param string $name
      * @return void
      */
-    protected function unsetReadonlyProperty(string $name)
+    protected function unsetReadonlyProperty(string $name): void
     {
         if ($this->issetReadonlyProperty($name)) {
             unset($this->readonlyValues[$name]);
@@ -82,7 +83,7 @@ abstract class ReadonlyPropertyContainer
      *
      * @throws ReadonlyPropertyError
      */
-    public function __set($name, $value)
+    public function __set($name, $value): void
     {
         if ($this->issetReadonlyProperty($name)) {
             throw new ReadonlyPropertyError(static::class, $name);
@@ -93,7 +94,7 @@ abstract class ReadonlyPropertyContainer
     /**
      * @inheritdoc
      */
-    public function __isset($name)
+    public function __isset($name): bool
     {
         return $this->issetReadonlyProperty($name) || parent::__isset($name);
     }
@@ -103,7 +104,7 @@ abstract class ReadonlyPropertyContainer
      *
      * @throws ReadonlyPropertyError
      */
-    public function __unset($name)
+    public function __unset($name): void
     {
         if ($this->issetReadonlyProperty($name)) {
             throw new ReadonlyPropertyError(static::class, $name);
