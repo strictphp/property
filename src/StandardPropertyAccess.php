@@ -18,7 +18,7 @@ trait StandardPropertyAccess
     /**
      * Magic method.
      *
-     * @param $name
+     * @param string $name
      * @return mixed
      *
      * @throws UndefinedPropertyError
@@ -31,7 +31,7 @@ trait StandardPropertyAccess
     /**
      * Magic method.
      *
-     * @param $name
+     * @param string $name
      * @param $value
      * @return void
      */
@@ -43,7 +43,7 @@ trait StandardPropertyAccess
     /**
      * Magic method.
      *
-     * @param $name
+     * @param string $name
      * @return bool
      */
     public function __isset($name): bool
@@ -54,7 +54,7 @@ trait StandardPropertyAccess
     /**
      * Magic method.
      *
-     * @param $name
+     * @param string $name
      * @return void
      *
      * @throws UndefinedPropertyError
