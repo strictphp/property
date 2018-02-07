@@ -118,7 +118,7 @@ class MyClass
 {
     public function __construct() {
         parent::__construct();
-        $this->value = 4;
+        $this->setPropertyDirectly('value', 4);
     }
     protected function registerProperty(PropertyRegister $propertyRegister): void
     {
