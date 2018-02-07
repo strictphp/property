@@ -10,8 +10,8 @@ namespace Strict\Property;
 /**
  * Override __get, __set, __isset, __unset.
  *
- * __get: throw UndefinedPropertyError
- * __set: add property dynamically
+ * __get:   throw UndefinedPropertyError
+ * __set:   add property dynamically
  * __isset: return null
  * __unset: throw UndefinedPropertyError
  *
